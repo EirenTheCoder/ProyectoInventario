@@ -56,8 +56,10 @@ public class Formulario_personas extends javax.swing.JPanel {
         jLabel4.setText("USUARIO");
 
         tfUsuario.setBackground(new java.awt.Color(81, 131, 50));
+        tfUsuario.setName("txtUsuario"); // NOI18N
 
         tfDNI1.setBackground(new java.awt.Color(81, 131, 50));
+        tfDNI1.setName("txtDni"); // NOI18N
 
         txtCargo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtCargo.setForeground(new java.awt.Color(0, 0, 0));

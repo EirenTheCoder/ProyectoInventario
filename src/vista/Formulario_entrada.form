@@ -111,9 +111,9 @@
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="tfDNI1" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
-                                              <Component id="tfDNI2" alignment="1" min="-2" pref="209" max="-2" attributes="0"/>
-                                              <Component id="tfDNI3" alignment="1" min="-2" pref="209" max="-2" attributes="0"/>
+                                              <Component id="txtNombre" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
+                                              <Component id="txtPrecio" alignment="1" min="-2" pref="209" max="-2" attributes="0"/>
+                                              <Component id="txtStock" alignment="1" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
@@ -123,8 +123,8 @@
                                           </Group>
                                           <EmptySpace pref="34" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jDateChooser1" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
-                                              <Component id="jDateChooser2" alignment="1" min="-2" pref="209" max="-2" attributes="0"/>
+                                              <Component id="FechaVencimiento" alignment="1" min="-2" pref="211" max="-2" attributes="0"/>
+                                              <Component id="FechaEntrada" alignment="1" min="-2" pref="209" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -141,30 +141,30 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tfDNI1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtNombre" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="txtDNI" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jDateChooser1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="FechaVencimiento" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCargo" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jDateChooser2" min="-2" max="-2" attributes="0"/>
+                              <Component id="FechaEntrada" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCargo1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="tfDNI2" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPrecio" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCargo3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtCargo2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="tfDNI3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtStock" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -205,12 +205,16 @@
                     <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfDNI1">
+                <Component class="javax.swing.JTextField" name="txtNombre">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="41" green="3f" red="3c" type="rgb"/>
                     </Property>
+                    <Property name="name" type="java.lang.String" value="txtNombre" noResource="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="txtCargo">
                   <Properties>
@@ -232,6 +236,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Registrar Usuario"/>
+                    <Property name="name" type="java.lang.String" value="btnRegistrar" noResource="true"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -280,9 +285,15 @@
                     <Property name="text" type="java.lang.String" value="F. ENTRADA"/>
                   </Properties>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+                <Component class="com.toedter.calendar.JDateChooser" name="FechaVencimiento">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="FechaVencimiento" noResource="true"/>
+                  </Properties>
                 </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+                <Component class="com.toedter.calendar.JDateChooser" name="FechaEntrada">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="FechaEntrada" noResource="true"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="txtCargo2">
                   <Properties>
@@ -295,11 +306,12 @@
                     <Property name="text" type="java.lang.String" value="Stock"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfDNI2">
+                <Component class="javax.swing.JTextField" name="txtPrecio">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="41" green="3f" red="3c" type="rgb"/>
                     </Property>
+                    <Property name="name" type="java.lang.String" value="txtPrecio" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="txtCargo3">
@@ -313,7 +325,7 @@
                     <Property name="text" type="java.lang.String" value="Precio"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="tfDNI3">
+                <Component class="javax.swing.JTextField" name="txtStock">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="41" green="3f" red="3c" type="rgb"/>
@@ -329,6 +341,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar Producto"/>
+                    <Property name="name" type="java.lang.String" value="btnBuscar" noResource="true"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>

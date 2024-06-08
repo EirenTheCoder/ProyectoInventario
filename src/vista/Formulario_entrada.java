@@ -3,6 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package vista;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Date;
 
 /**
  *
@@ -31,18 +40,18 @@ public class Formulario_entrada extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtDNI = new javax.swing.JLabel();
-        tfDNI1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         txtCargo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtCargo1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        FechaVencimiento = new com.toedter.calendar.JDateChooser();
+        FechaEntrada = new com.toedter.calendar.JDateChooser();
         txtCargo2 = new javax.swing.JLabel();
-        tfDNI2 = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         txtCargo3 = new javax.swing.JLabel();
-        tfDNI3 = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         jPanel1.setPreferredSize(new java.awt.Dimension(790, 480));
@@ -58,7 +67,13 @@ public class Formulario_entrada extends javax.swing.JPanel {
         txtDNI.setText("NOMBRE");
         txtDNI.setFocusable(false);
 
-        tfDNI1.setBackground(new java.awt.Color(60, 63, 65));
+        txtNombre.setBackground(new java.awt.Color(60, 63, 65));
+        txtNombre.setName("txtNombre"); // NOI18N
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
 
         txtCargo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtCargo.setForeground(new java.awt.Color(0, 0, 0));
@@ -67,6 +82,7 @@ public class Formulario_entrada extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(81, 131, 50));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Registrar Usuario");
+        jButton1.setName("btnRegistrar"); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -109,21 +125,27 @@ public class Formulario_entrada extends javax.swing.JPanel {
         txtCargo1.setForeground(new java.awt.Color(0, 0, 0));
         txtCargo1.setText("F. ENTRADA");
 
+        FechaVencimiento.setName("FechaVencimiento"); // NOI18N
+
+        FechaEntrada.setName("FechaEntrada"); // NOI18N
+
         txtCargo2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtCargo2.setForeground(new java.awt.Color(0, 0, 0));
         txtCargo2.setText("Stock");
 
-        tfDNI2.setBackground(new java.awt.Color(60, 63, 65));
+        txtPrecio.setBackground(new java.awt.Color(60, 63, 65));
+        txtPrecio.setName("txtPrecio"); // NOI18N
 
         txtCargo3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         txtCargo3.setForeground(new java.awt.Color(0, 0, 0));
         txtCargo3.setText("Precio");
 
-        tfDNI3.setBackground(new java.awt.Color(60, 63, 65));
+        txtStock.setBackground(new java.awt.Color(60, 63, 65));
 
         jButton2.setBackground(new java.awt.Color(81, 131, 50));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Buscar Producto");
+        jButton2.setName("btnBuscar"); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -154,17 +176,17 @@ public class Formulario_entrada extends javax.swing.JPanel {
                                     .addComponent(txtCargo2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tfDNI1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfDNI2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfDNI3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCargo1)
                                     .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(FechaVencimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FechaEntrada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))))
@@ -174,25 +196,25 @@ public class Formulario_entrada extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfDNI1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDNI, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FechaVencimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCargo, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(13, 13, 13)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCargo1))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfDNI2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCargo3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCargo2)
-                    .addComponent(tfDNI3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93)
+                    .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(133, 133, 133)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -258,28 +280,70 @@ public class Formulario_entrada extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Registrar Producto
+        
+        try{
+        registrarCampos();
+        }
+        catch(SQLException ex){
+         JOptionPane.showMessageDialog(Formulario_entrada.this, "Error al registrar los campos en la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
+
+    private void registrarCampos() throws SQLException {
+        // Datos de conexión
+        String url = "jdbc:mysql://localhost:3306/tu_base_de_datos";
+        String usuario = "tu_usuario";
+        String contraseña = "tu_contraseña";
+
+        // Obtener el texto de los JTextField
+        String Nombre = txtNombre.getText();
+        String Stock = txtStock.getText();
+        Date d = FechaVencimiento.getDate();
+        Date e = FechaEntrada.getDate();
+        
+        // Conectar a la base de datos
+        try (Connection conexion = DriverManager.getConnection(url, usuario, contraseña)) {
+            // Preparar la consulta SQL
+            String sql = "INSERT INTO tu_tabla (campo1, campo2) VALUES (?, ?)";
+            try (PreparedStatement statement = conexion.prepareStatement(sql)) {
+                // Configurar los parámetros
+                statement.setString(1, Nombre);
+                statement.setString(2, Stock);
+
+                // Ejecutar la consulta
+                statement.executeUpdate();
+
+                // Mostrar un mensaje de confirmación
+                JOptionPane.showMessageDialog(this, "Datos registrados correctamente");
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser FechaEntrada;
+    private com.toedter.calendar.JDateChooser FechaVencimiento;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField tfDNI1;
-    private javax.swing.JTextField tfDNI2;
-    private javax.swing.JTextField tfDNI3;
     private javax.swing.JLabel txtCargo;
     private javax.swing.JLabel txtCargo1;
     private javax.swing.JLabel txtCargo2;
     private javax.swing.JLabel txtCargo3;
     private javax.swing.JLabel txtDNI;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 
 
