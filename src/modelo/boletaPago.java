@@ -11,12 +11,14 @@ package modelo;
 public class boletaPago {
     int numBol,Dni,id_prod,cant_prod;
     public boletaPago(int numBol,int Dni,int id_prod,int cant_prod){
-        numBol = this.numBol;
-        Dni = this.Dni;
-        id_prod = this.id_prod;
-        cant_prod = this.cant_prod;
+     this.numBol = numBol;
+     this.Dni = Dni;
+     this.id_prod = id_prod;
+     this.cant_prod = cant_prod;
         
     }   
+
+    public boletaPago() {   }
     public int getNumBol(){
     
         return numBol;

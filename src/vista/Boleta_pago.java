@@ -63,7 +63,7 @@ public class Boleta_pago extends javax.swing.JPanel {
 
         edtRuc_Dni.setText("Inserte el RUC o DNI");
 
-        btnRegistroBoleta.setText("REGISTRAR EN RENIEC");
+        btnRegistroBoleta.setText("REGISTRAR  BOLETA");
 
         edtRuc_Dni1.setText("Ingrese Cantidad Vendida");
         edtRuc_Dni1.addActionListener(new java.awt.event.ActionListener() {
